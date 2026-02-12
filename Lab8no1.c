@@ -4,10 +4,10 @@ int findMax(int num[],int numsize);
 void printAr(int myAr[],int Arsize);
 void addone(int number[], int add[], int sizeNum); //1.1
 void addtwo(int number[], int pos[], int x, int sizeNum, int sizePos); //1.2
-void addthree(int number[], int pos[][2], int sizNum, int sizePosrow ); //1.3
+void addthree(int number[], int pos[][2], int sizeNum, int sizePosrow ); //1.3
 
 
-main() {
+int main() {
 	int number[5] = {20,50,100,199,9};
 	int score[5] = {1,2,3,4,5};
 	int max;
