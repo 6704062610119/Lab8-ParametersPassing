@@ -1,9 +1,10 @@
 #include <stdio.h> 
 int checkscore(char std[],char key[]);
 int firstright(char std[][10],char key[],int n);
+int hardest(char std[][10],char key[],int freq[],int row, int column);
 
 int main() {
-    int i=0,right=0;
+    int i=0,freq[10]={0};
     char ans[8][10]={
         	{'A','B','A','C','C','D','E','E','A','D'},//7<---std1
 			{'D','B','A','B','C','A','E','E','A','D'},//6<---std2
@@ -21,6 +22,7 @@ int main() {
 	}
 	
 	printf("No.1 correct: %d\n",firstright(ans,keys,8)); //2.2
+	printf("Hardest is no.%d\n",hardest(ans,keys,freq,8,10)); //2.3
 
 	
 	return 0;		
@@ -34,7 +36,7 @@ int checkscore(char std[],char key[]){ //2.1
 		}
 	}
 	return score;
-};
+}
 
 int firstright(char std[][10],char key[],int n){ //2.2
 	int i,count=0;
@@ -44,6 +46,27 @@ int firstright(char std[][10],char key[],int n){ //2.2
 		}
 	}
 	return count;
-};
+}
+
+int hardest(char std[][10],char key[],int freq[],int row, int column){
+	int i,j;
+	for(i=0;i<row;i++){
+		for(j=0;j<column;j++){
+			if(std[i][j] == key[j]){
+				freq[j]++;
+			}
+		}
+	}
+	
+	int min=freq[0],hard=1;
+	for(i=0;i<column;i++){
+		if(min>freq[i]){
+			min = freq[i];
+			hard = i+1;
+		}
+	}
+	return hard;
+}
+
 
 
